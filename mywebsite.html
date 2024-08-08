@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bircan Şen</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-color: #000000;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        .moving-text {
+            font-size: 2em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: moveText 3s forwards;
+        }
+
+        .social-links {
+            display: none;
+            margin-top: 50px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-links img {
+            width: 35px;
+            height: 35px;
+        }
+
+        .description {
+            font-size: 1.2em;
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 2s forwards;
+        }
+
+        .description a {
+            color: aliceblue;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .description a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: aliceblue;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .description a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .description pre {
+            font-size: 1.2em;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        @keyframes moveText {
+            0% {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+            }
+            100% {
+                top: -20%; /* Ortanın biraz üstü */
+                left: 50%;
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="moving-text"><i><strong>About</strong></i></div>
+        <div class="description" id="description">
+            <pre><i><strong>
+              Hello! I'm Bircan, a junior computer engineering student at
+                <a href="https://www.omu.edu.tr/tr" target="_blank">Ondokuz Mayis University</a>. Thank you for visiting!
+            </strong></i></pre>
+            <p><i><strong>
+              For more information about me: <a href="CV GÜNCEL.pdf" download="dosya.pdf">Cv &#11015;&#65039; </a>
+            </strong></i></p>
+        </div>
+        <div class="social-links" id="socialLinks">
+            <a href="https://instagram.com" target="_blank">
+                <img src="darkmode-instagram.jpg" alt="Instagram" title="Instagram">
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+                <img src="darkmode-linkedin.png" alt="LinkedIn" title="LinkedIn">
+            </a>
+            <a href="https://github.com" target="_blank">
+                <img src="darkmode-github.jpg.png" alt="GitHub" title="GitHub">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const movingText = document.querySelector('.moving-text');
+            const description = document.getElementById('description');
+            const socialLinks = document.getElementById('socialLinks');
+            
+            movingText.addEventListener('animationend', function() {
+                description.style.display = 'block';
+                socialLinks.style.display = 'flex';
+                socialLinks.style.justifyContent = 'center';
+                description.style.animation = 'fadeIn 2s forwards';
+                socialLinks.style.animation = 'fadeIn 2s forwards';
+            });
+        });
+    </script>
+</body>
+</html>
+
+
